@@ -2,10 +2,24 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import * as React from 'react';
 import "../home.css"
+import { useState, useEffect } from 'react'
 import video from '../videos/1.mp4'
 function Home() {
 
-  
+  const [Users, fetchUsers] = useState([])
+ 
+  const getData = () => {
+    fetch('https://mocki.io/v1/ee762599-31ae-4a3d-a6c7-d596525945e1')
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res)
+        fetchUsers(res)
+      })
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
   return (
     <div class="main">
     <div class="header">
@@ -14,16 +28,19 @@ function Home() {
     <div class="flexbox">
    
       <div class="left-panel">
-        <h1>fbdb</h1>
+      <Box sx={{m:18,mt:20,mb:50}}>
+        <h1 > {
+       Users.texts &&Users.texts .map((item)=><ul><h1 class="title">{item.heading}</h1>
+       <h1 class="head">{item.subHeading}</h1><p class="para">{item.description}</p></ul>)
+     }</h1>
+       
+        </Box>
+       
       </div>
       <div class="right-panel">
-      {/* <video autoplay muted loop src={video}  width="750" height="500"  config={config}
-      controls>
-        
-     </video> */}
-     <Box sx={{mt:10,mb:3}}>
+     
+     <Box sx={{mt:10}}>
           <video
- 
    muted
    autoPlay 
    loop >
@@ -34,9 +51,7 @@ function Home() {
    
       </div>
     </div>
-    <div class="footer">
-      
-      </div>
+   
     </div>
   );
 }
