@@ -112,7 +112,7 @@ video {
   margin:8% ;
   cursor: pointer;
 }
-.fake {
+.dummy {
   padding-top: 10%;
 }
 .videopanel {
@@ -129,4 +129,28 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+  .vid1{
+        position: sticky;
+     
+
+     
+       
+        text-align: center;
+        transform: translateX(0%);
+        margin-top: -650px;
+        
+       
+    }
+.vid2{  
+
+    position: sticky;
+     
+    
+        
+        text-align: center;
+        transform: translateX(0%);
+        transform: translateY(4.3%);
+      
+  margin-top: 20px;
 }

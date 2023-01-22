@@ -3,29 +3,19 @@ import "../home.css";
 import { useState, useEffect } from "react";
 import video from "../videos/1.mp4";
 import video1 from "../videos/2.mp4";
-import video2 from "../videos/3.mp4";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import $ from "jquery";
 function Home() {
-  const [description, setDescription] = useState(true);
-  const [reviews, setReviews] = useState(false);
-  const [vid2, setVid2] = useState(false);
-  const descriptionHandler = () => {
-    setDescription(true);
-    setReviews(false);
-    setVid2(false);
-  };
-  const reviewsHandler = () => {
-    setDescription(false);
-    setReviews(true);
-    setVid2(false);
-  };
-
-  const vid2Handler = () => {
-    setDescription(false);
-    setReviews(false);
-    setVid2(true);
-  };
+  $(document).ready(function () {
+    $(window).scroll(function (event) {
+      let scroll = $(this).scrollTop();
+      let opacity = 1 - scroll / 1000;
+      if (opacity > 0) {
+        $(".vid1").css("opacity", opacity);
+      }
+    });
+  });
 
   const [Users, fetchUsers] = useState([]);
 
@@ -39,7 +29,7 @@ function Home() {
   };
   useEffect(() => {
     AOS.init();
-  }, [])
+  }, []);
   useEffect(() => {
     getData();
   }, []);
@@ -61,34 +51,16 @@ function Home() {
           </div>
         </div>
         <div class="right-panel">
-          <div class="fake">
-           
-          </div>
+          <div class="dummy"></div>
 
-          <div class="videopanel"  data-aos="fade-left">
-            {description && (
-              <video muted autoPlay loop>
-                <source src={video} type="video/mp4"></source>
-                
-              </video>
-            )}
-            {reviews && (
-              <video muted autoPlay loop>
-                <source src={video1} type="video/mp4"></source>
-              </video>
-            )}
-            {vid2 && (
-              <video muted autoPlay loop>
-                <source src={video2} type="video/mp4"></source>
-              </video>
-            )}
-            <div id="wrapper">
-          
-             <button class="button-62 " type="button" data-aos="fade-up" data-aos-duration="1000" onClick={descriptionHandler}>heading 1 </button>
-            <button class="button-62" type="button"  data-aos="fade-up" data-aos-duration="950" onClick={reviewsHandler}>heading 2</button>
-            <button class="button-62" type="button"  data-aos="fade-up" data-aos-duration="975" onClick={vid2Handler}>heading 3</button></div>
+          <div class="videopanel" data-aos="fade-left">
+            <video muted autoPlay loop class="vid2">
+              <source src={video1} type="video/mp4"></source>
+            </video>
+            <video muted autoPlay loop class="vid1">
+              <source src={video} type="video/mp4"></source>
+            </video>
           </div>
-          
         </div>
       </div>
     </div>
