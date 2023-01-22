@@ -1,13 +1,13 @@
 
 import './App.css';
-import Apifetch from './components/api';
+import Banner from './components/banner';
 import Home from './components/home';
 import ResponsiveAppBar from './components/navbar';
 function App() {
   return (
     <div className="App">
      <ResponsiveAppBar />
-     <Apifetch />
+     <Banner />
      <Home />
      
     </div>
