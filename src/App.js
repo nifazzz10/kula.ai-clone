@@ -7,8 +7,9 @@ function App() {
   return (
     <div className="App">
      <ResponsiveAppBar />
-     <Home />
      <Apifetch />
+     <Home />
+     
     </div>
   );
 }

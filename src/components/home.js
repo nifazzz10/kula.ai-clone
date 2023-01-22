@@ -2,10 +2,36 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import * as React from 'react';
 import "../home.css"
-import { useState, useEffect } from 'react'
+import  { useRef, useState, useEffect } from 'react';
+
+
 import video from '../videos/1.mp4'
+
+import video1 from '../videos/2.mp4'
+
+import video2 from '../videos/3.mp4'
 function Home() {
 
+  const [description, setDescription] = useState(true);
+  const [reviews, setReviews] = useState(false);
+  const [vid2, setVid2] = useState(false);
+  const descriptionHandler = () => {
+    setDescription(true);
+    setReviews(false);
+    setVid2(false);
+  };
+  const reviewsHandler = () => {
+    setDescription(false);
+    setReviews(true);
+    setVid2(false);
+    };
+      
+    const vid2Handler = () => {
+      setDescription(false);
+      setReviews(false);
+      setVid2(true);
+    };
+  
   const [Users, fetchUsers] = useState([])
  
   const getData = () => {
@@ -22,33 +48,54 @@ function Home() {
   }, [])
   return (
     <div class="main">
-    <div class="header">
-    <Typography>fefwf</Typography>
-    </div>
+    
     <div class="flexbox">
    
       <div class="left-panel">
-      <Box sx={{m:18,mt:20,mb:50}}>
+      <div class="textpanel">
         <h1 > {
        Users.texts &&Users.texts .map((item)=><ul><h1 class="title">{item.heading}</h1>
        <h1 class="head">{item.subHeading}</h1><p class="para">{item.description}</p></ul>)
      }</h1>
        
-        </Box>
-       
+       </div>
       </div>
       <div class="right-panel">
      
-     <Box sx={{mt:10}}>
-          <video
+    
+     <div class="fake">
+            <button onClick={descriptionHandler}>
+                Descriptions</button>
+            <button onClick={reviewsHandler}>
+                Reviews</button>
+                <button onClick={vid2Handler}>
+                Reviews</button>
+        </div>
+
+   <div class="videopanel">
+       {description && (       <video
    muted
    autoPlay 
    loop >
-<source src={video} type="video/mp4"></source>   
-</video>
-</Box>
+            <source src={video} type="video/mp4"></source> </video>  
+            )}
+            {reviews && (       <video
+   muted
+   autoPlay 
+   loop >
+              <source src={video1} type="video/mp4"></source>   </video>
+            )}
+   {vid2 && (       <video
+   muted
+   autoPlay 
+   loop >
+              <source src={video2} type="video/mp4"></source>   </video>
+        
+            )}
 
-   
+
+
+</div>
       </div>
     </div>
    
