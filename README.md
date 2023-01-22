@@ -9,9 +9,7 @@ This is an Clone of an hosted website named kula.ai
 - [@nifaz](https://www.github.com/nifazzz10)
 
 
-## Demo
 
-Insert gif or link to demo
 
 
 ## Deployment
